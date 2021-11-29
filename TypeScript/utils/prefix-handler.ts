@@ -3,13 +3,14 @@ import prefixesSchema from "../schemas/prefixes-schema";
 
 const cache: {[key: string]: string} = {};
 
-export const getPrefix = async(guildId: string) => {
+export const getPrefix = async(guildId: string): string => {
 	if(cache[guildId]) return cache[guildId];
 	const result = await prefixesSchema.findOne({_id: guildId});
 	let prefix = "";
 	if(result && result.prefix) prefix = result.prefix;
 	else prefix = defaultPrefix;
 	cache[guildId] = prefix;
+	return prefix;
 };
 
 export const setPrefix = async(guildId: string, newPrefix: string): Promise<string> => {
