@@ -9,7 +9,7 @@ import { GuildMember, MessageEmbed, MessageActionRow, MessageAttachment, Sticker
 export const memberHasPermissions = (
 	member: GuildMember,
 	permissions: PermissionString | PermissionString[],
-	channel: TextChannel | null = null,
+	channel: any | null = null,
 	checkAdmin = true
 ) => {
 	if(!member) return false;
@@ -34,7 +34,7 @@ export const memberHasPermissions = (
  * @returns {Message} The message that was sent
  */
 export const sendMessage = async(
-	channel: TextChannel,
+	channel: any,
 	content: string | null = null,
 	embeds: MessageEmbed | MessageEmbed[] | null = null,
 	components: MessageActionRow | null = null,
