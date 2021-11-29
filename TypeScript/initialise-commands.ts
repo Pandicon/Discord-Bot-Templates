@@ -5,7 +5,7 @@ const validatePermissions = (permissions: string) => {
 	for(const permission of permissions) {
 		if(!validPermissions.includes(permission)) throw new Error(`Unknown permission "${permission}"`);
 	};
-}
+};
 
 export default (): {
 	[key: string]: any
