@@ -1,8 +1,6 @@
 import Discord, { Intents } from "discord.js";
-import dotenv from "dotenv";
+import "dotenv/config";
 import connectToMongo from "./mongo";
-
-dotenv.config();
 
 const client = new Discord.Client({
 	intents: [
@@ -27,7 +25,7 @@ client.on("ready", async() => {
 
 	const eventArgs: {[key: string]: any} = {
 		"messageCreate": commands
-	}
+	};
 
 	for(const event of events) {
 		event.callback(client, eventArgs[event.name]);

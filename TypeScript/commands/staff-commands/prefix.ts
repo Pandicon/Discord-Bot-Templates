@@ -10,7 +10,7 @@ export default {
 	permissions: ["ADMINISTRATOR"],
 	callback: async(message: Message, ...args: string[]) => {
 		const newPrefix = args[0];
-		if(!message?.guild?.id) return replyToMessage(message, false, "Something went wrong, please try again later.")
+		if(!message?.guild?.id) return replyToMessage(message, false, "Something went wrong, please try again later.");
 		let state = await setPrefix(message.guild?.id, newPrefix);
 		if(state == "same") {
 			replyToMessage(message, false, `The prefix is already set to \`${newPrefix}\`!`);

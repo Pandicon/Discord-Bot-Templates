@@ -21,7 +21,7 @@ export const memberHasPermissions = (
 		if(!memberPermissions.includes(permission)) return false;
 	}
 	return true;
-}
+};
 
 /**
  * @param {TextChannel} channel The channel to send the message to
@@ -50,7 +50,7 @@ export const sendMessage = async(
 	if(stickers) messageOptions["content"] = stickers;
 	if(attachments) messageOptions["attachments"] = attachments;
 	return await channel.send(messageOptions);
-}
+};
 
 /**
  * @param {Message} message The message to reply to
@@ -85,7 +85,7 @@ export const replyToMessage = async(
 	if(stickers) messageOptions["content"] = stickers;
 	if(attachments) messageOptions["attachments"] = attachments;
 	return await message.reply(messageOptions);
-}
+};
 
 /**
  * @param {Message} message The message to reply to
@@ -120,7 +120,7 @@ export const editMessage = async(
 	if(stickers) messageOptions["content"] = stickers;
 	if(attachments) messageOptions["attachments"] = attachments;
 	return await message.edit(messageOptions);
-}
+};
 
 /**
  * @param {any} channel The variable to check
@@ -131,5 +131,5 @@ export const isTextChannel = (channel: any) => {
 		return channel.isText();
 	} catch {
 		return false;
-	}
-}
+	};
+};

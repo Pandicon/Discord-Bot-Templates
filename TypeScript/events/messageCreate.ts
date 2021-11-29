@@ -40,7 +40,7 @@ const runCommand = async(message: Message, commands: { [key: string]: any }) => 
 	} catch(error) {
 		console.log(error);
 	};
-}
+};
 
 export default {
 	name: "messageCreate",
