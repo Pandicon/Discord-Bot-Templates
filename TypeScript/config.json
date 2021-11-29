@@ -1,5 +1,5 @@
 {
-	"prefix": "&",
+	"prefix": "*",
 	"validPermissions": [
 		"CREATE_INSTANT_INVITE",
 		"KICK_MEMBERS",
