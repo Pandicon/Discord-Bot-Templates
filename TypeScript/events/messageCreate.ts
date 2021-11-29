@@ -35,7 +35,11 @@ const runCommand = async(message: Message, commands: { [key: string]: any }) => 
 		replyToMessage(message, true, `${permissionError}`);
 		return;
 	};
-	command.callback(message, ...args);
+	try {
+		command.callback(message, ...args);
+	} catch(error) {
+		console.log(error);
+	};
 }
 
 export default {
@@ -43,7 +47,11 @@ export default {
 	callback: (client: Client, commands: { [key: string]: any }) => {
 		client.on("messageCreate", async message => {
 			// Running commands
-			await runCommand(message, commands);
+			try {
+				await runCommand(message, commands);
+			} catch(error) {
+				console.log(error);
+			};
 		});
 	}
 };
