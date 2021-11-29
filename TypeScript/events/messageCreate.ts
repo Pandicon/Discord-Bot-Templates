@@ -2,13 +2,18 @@ import { Client, Message } from "discord.js";
 import { prefix as defaultPrefix } from "../config.json";
 import { replyToMessage, memberHasPermissions } from "../utils/discord";
 import { getPrefix } from "../utils/prefix-handler";
+import client from "../index";
 
 const runCommand = async(message: Message, commands: { [key: string]: any }) => {
 	if(message.channel.type == "DM") return;
-	const prefix = await getPrefix(message!.guild!.id) || defaultPrefix;
+	if(!message?.channel || !message?.guild || !client?.user || message.author.bot) return;
+	const prefix = await getPrefix(message.guild.id) || defaultPrefix;
 	const text = message.content;
-	if(message.author.bot || !text.startsWith(prefix)) return;
-	const args = text.slice(prefix.length).split(/ +/);
+	if(text.toLowerCase() == `<@${client.user.id}>` || text.toLowerCase() == `<@!${client.user.id}>`) {
+		replyToMessage(message, false, `My prefix here is \`${prefix}\``);
+	};
+	if(!text.startsWith(prefix)) return;
+	const args = text.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift();
 	if(!commandName || !commands[commandName]) return;
 	const command = commands[commandName];
