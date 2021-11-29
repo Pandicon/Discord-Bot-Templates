@@ -12,11 +12,17 @@ const client = new Discord.Client({
 
 client.on("ready", () => {
 	console.log("The bot is online!");
-	let initialiser = require("./initialise-commands.ts");
-	if(initialiser.default) initialiser = initialiser.default;
+	let commandsInitialiser = require("./initialise-commands.ts");
+	if(commandsInitialiser.default) commandsInitialiser = commandsInitialiser.default;
 
-	const commands = initialiser(client);
+	const commands = commandsInitialiser();
 	console.log(commands);
+
+	let eventsInitialiser = require("./initialise-events.ts");
+	if(eventsInitialiser.default) eventsInitialiser = eventsInitialiser.default;
+
+	const events = eventsInitialiser();
+	console.log(events);
 });
 
 client.on("messageCreate", (message) => {
