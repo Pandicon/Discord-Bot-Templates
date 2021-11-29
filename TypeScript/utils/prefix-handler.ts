@@ -12,12 +12,12 @@ export const getPrefix = async(guildId: string) => {
 	cache[guildId] = prefix;
 };
 
-export const setPrefix = async(guildId: string, newPrefix: string) => {
-	if(newPrefix == cache[guildId]) return;
+export const setPrefix = async(guildId: string, newPrefix: string): Promise<string> => {
+	if(newPrefix == cache[guildId]) return "same";
 	if(newPrefix == defaultPrefix) {
 		await prefixesSchema.deleteMany({_id: guildId});
 		cache[guildId] = newPrefix;
-		return;
+		return "default";
 	};
 	await prefixesSchema.findByIdAndUpdate(
 		guildId,
@@ -30,4 +30,5 @@ export const setPrefix = async(guildId: string, newPrefix: string) => {
 		}
 	);
 	cache[guildId] = newPrefix;
+	return "new";
 };
