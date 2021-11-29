@@ -15,10 +15,10 @@ const getFiles = (directory: string, suffix: string): string[] => {
 			];
 		} else if(file.name.endsWith(suffix)) {
 			commandFiles.push(`${directory}/${file.name}`);
-		}
-	}
+		};
+	};
 
 	return commandFiles;
-}
+};
 
 export default getFiles;
