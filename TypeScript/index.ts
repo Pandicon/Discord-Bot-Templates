@@ -36,6 +36,4 @@ client.on("ready", async() => {
 
 client.login(process.env.BOT_TOKEN);
 
-export default {
-	client: client
-};
+export default client;
