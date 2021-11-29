@@ -1,5 +1,6 @@
 import Discord, { Intents } from "discord.js";
 import dotenv from "dotenv";
+import connectToMongo from "./mongo";
 
 dotenv.config();
 
@@ -10,8 +11,10 @@ const client = new Discord.Client({
 	]
 });
 
-client.on("ready", () => {
+client.on("ready", async() => {
 	console.log("The bot is online!");
+	console.log("Connecting to Mongo");
+	await connectToMongo();
 	let commandsInitialiser = require("./initialise-commands.ts");
 	if(commandsInitialiser.default) commandsInitialiser = commandsInitialiser.default;
 
@@ -25,7 +28,7 @@ client.on("ready", () => {
 	const eventArgs: {[key: string]: any} = {
 		"messageCreate": commands
 	}
-	
+
 	for(const event of events) {
 		event.callback(client, eventArgs[event.name]);
 	};
