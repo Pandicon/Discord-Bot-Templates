@@ -1,8 +1,11 @@
 import { Client, Message } from "discord.js";
-import { prefix } from "../config.json";
+import { prefix as defaultPrefix } from "../config.json";
 import { replyToMessage, memberHasPermissions } from "../utils/discord";
+import { getPrefix } from "../utils/prefix-handler";
 
-const runCommand = (message: Message, commands: { [key: string]: any }) => {
+const runCommand = async(message: Message, commands: { [key: string]: any }) => {
+	if(message.channel.type == "DM") return;
+	const prefix = await getPrefix(message!.guild!.id) || defaultPrefix;
 	const text = message.content;
 	if(message.author.bot || !text.startsWith(prefix)) return;
 	const args = text.slice(prefix.length).split(/ +/);
@@ -33,9 +36,9 @@ const runCommand = (message: Message, commands: { [key: string]: any }) => {
 export default {
 	name: "messageCreate",
 	callback: (client: Client, commands: { [key: string]: any }) => {
-		client.on("messageCreate", message => {
+		client.on("messageCreate", async message => {
 			// Running commands
-			runCommand(message, commands);
+			await runCommand(message, commands);
 		});
 	}
 };
