@@ -3,7 +3,7 @@ import prefixesSchema from "../schemas/prefixes-schema";
 
 const cache: {[key: string]: string} = {};
 
-export const getPrefix = async(guildId: string): string => {
+export const getPrefix = async(guildId: string): Promise<string> => {
 	if(cache[guildId]) return cache[guildId];
 	const result = await prefixesSchema.findOne({_id: guildId});
 	let prefix = "";
