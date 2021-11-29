@@ -13,7 +13,7 @@ export default (): {
 	console.log("Initialising commands");
 	const allCommands = {} as {
 		[key: string]: any
-	}
+	};
 
 	const suffix = ".ts";
 
