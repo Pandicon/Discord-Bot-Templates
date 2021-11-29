@@ -1,7 +1,7 @@
 import getFiles from "./get-files";
 
-export default (): string[] => {
-	const allEvents = [] as string[];
+export default (): {[key: string]: any}[] => {
+	const allEvents = [] as {[key: string]: any}[];
 
 	const suffix = ".ts";
 
