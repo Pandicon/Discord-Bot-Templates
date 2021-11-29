@@ -9,7 +9,13 @@ const runCommand = (message: Message, commands: { [key: string]: any }) => {
 	const commandName = args.shift();
 	if(!commandName || !commands[commandName]) return;
 	const command = commands[commandName];
-	const { permissions, minArgs, maxArgs, expectedArgs, permissionError } = command;
+	const {
+		permissions,
+		minArgs,
+		maxArgs,
+		expectedArgs,
+		permissionError
+	} = command;
 	if(args.length < minArgs || (typeof maxArgs == "number" && maxArgs < args.length)) { // Wrong amount of arguments
 		let messageArgs = expectedArgs;
 		if(typeof expectedArgs == "object") messageArgs = expectedArgs.join("\n");
