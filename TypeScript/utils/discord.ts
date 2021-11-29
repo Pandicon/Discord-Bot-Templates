@@ -1,4 +1,4 @@
-import { GuildMember, GuildChannel, DMChannel, MessageEmbed, MessageActionRow, MessageAttachment, Sticker, Message, PermissionString } from "discord.js";
+import { GuildMember, MessageEmbed, MessageActionRow, MessageAttachment, Sticker, Message, PermissionString, TextChannel } from "discord.js";
 /**
  * @param {GuildMember} member The guild member
  * @param {PermissionString | PermissionString[]} permissions One permission/An array of permissions to check for
@@ -9,7 +9,7 @@ import { GuildMember, GuildChannel, DMChannel, MessageEmbed, MessageActionRow, M
 export const memberHasPermissions = (
 	member: GuildMember,
 	permissions: PermissionString | PermissionString[],
-	channel: GuildChannel | DMChannel | any | null = null,
+	channel: TextChannel | null = null,
 	checkAdmin = true
 ) => {
 	if(!member) return false;
@@ -24,7 +24,7 @@ export const memberHasPermissions = (
 }
 
 /**
- * @param {GuildChannel | DMChannel} channel The channel to send the message to
+ * @param {TextChannel} channel The channel to send the message to
  * @param {string} content The text of the message
  * @param {MessageEmbed | MessageEmbed[]} embeds The embeds to send
  * @param {MessageActionRow} components The components of the message
@@ -34,7 +34,7 @@ export const memberHasPermissions = (
  * @returns {Message} The message that was sent
  */
 export const sendMessage = async(
-	channel: GuildChannel | DMChannel | any,
+	channel: TextChannel,
 	content: string | null = null,
 	embeds: MessageEmbed | MessageEmbed[] | null = null,
 	components: MessageActionRow | null = null,
