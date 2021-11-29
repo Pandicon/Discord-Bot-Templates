@@ -10,11 +10,11 @@ const runCommand = (message: Message, commands: { [key: string]: any }) => {
 	if(!commandName || !commands[commandName]) return;
 	const command = commands[commandName];
 	const {
-		permissions,
-		minArgs,
-		maxArgs,
-		expectedArgs,
-		permissionError
+		permissions = [],
+		minArgs = 0,
+		maxArgs = null,
+		expectedArgs = "",
+		permissionError = "You do not have all the required permissions to run this command"
 	} = command;
 	if(args.length < minArgs || (typeof maxArgs == "number" && maxArgs < args.length)) { // Wrong amount of arguments
 		let messageArgs = expectedArgs;

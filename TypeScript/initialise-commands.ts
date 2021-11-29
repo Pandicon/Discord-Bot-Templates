@@ -24,12 +24,7 @@ export default (): {
 		if(commandOptions.default) commandOptions = commandOptions.default;
 		let {
 			commands,
-			expectedArgs = "",
-			permissionError = "You do not have all the required permissions to run this command",
-			minArgs = 0,
-			maxArgs = null,
-			permissions = [],
-			callback
+			permissions = []
 		} = commandOptions;
 
 		if(typeof commands == "string") commands = [commands];
