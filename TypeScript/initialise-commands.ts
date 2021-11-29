@@ -17,12 +17,11 @@ export default (): {
 	const suffix = ".ts";
 
 	const commandFiles = getFiles("./commands", suffix);
-	console.log(commandFiles);
 
 	for(const command of commandFiles) {
+		console.log("Initialising commands");
 		let commandOptions = require(command);
 		if(commandOptions.default) commandOptions = commandOptions.default;
-		console.log(commandOptions);
 		let {
 			commands,
 			expectedArgs = "",
