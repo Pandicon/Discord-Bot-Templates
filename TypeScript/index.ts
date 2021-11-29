@@ -1,5 +1,5 @@
 import Discord, { Intents } from "discord.js";
-import dotenv from "dotenv";
+import "dotenv/config";
 import connectToMongo from "./mongo";
 
 dotenv.config();
