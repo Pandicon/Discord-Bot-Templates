@@ -9,4 +9,4 @@ You will have to rename the `.env-template` file to `.env` and fill in the crede
 BOT_TOKEN=123
 MONGO_URI=aBc
 ```
-After you set this up, just run `ts-node index.ts` to start the bot.
+After you set this up, just run `ts-node index.ts` or `ts-node .` to start the bot.
