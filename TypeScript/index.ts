@@ -25,6 +25,7 @@ client.on("ready", () => {
 	const eventArgs: {[key: string]: any} = {
 		"messageCreate": commands
 	}
+	
 	for(const event of events) {
 		event.callback(client, eventArgs[event.name]);
 	};
