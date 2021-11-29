@@ -10,6 +10,7 @@ const validatePermissions = (permissions: string) => {
 export default (): {
 	[key: string]: any
 } => {
+	console.log("Initialising commands");
 	const allCommands = {} as {
 		[key: string]: any
 	}
@@ -19,7 +20,6 @@ export default (): {
 	const commandFiles = getFiles("./commands", suffix);
 
 	for(const command of commandFiles) {
-		console.log("Initialising commands");
 		let commandOptions = require(command);
 		if(commandOptions.default) commandOptions = commandOptions.default;
 		let {
