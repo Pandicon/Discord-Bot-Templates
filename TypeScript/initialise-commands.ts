@@ -1,4 +1,3 @@
-import { Client } from "discord.js";
 import getFiles from "./get-files";
 import { validPermissions } from "./config.json";
 
@@ -8,7 +7,7 @@ const validatePermissions = (permissions: string) => {
 	};
 }
 
-export default (client: Client): {
+export default (): {
 	[key: string]: any
 } => {
 	const allCommands = {} as {
